@@ -1,0 +1,80 @@
+<main class="ciberseguridad-page" [style.--panel-color]="equipoActivo.color">
+  <header class="ciberseguridad-header">
+    <p class="eyebrow">CIBERSEGURIDAD</p>
+    <h1>Ciberseguridad</h1>
+    <p class="intro">
+      Tres perspectivas complementarias para proteger sistemas y responder a amenazas.
+    </p>
+
+    <div class="equipo-activo" aria-live="polite">
+      <span class="equipo-activo-icono" aria-hidden="true">{{ equipoActivo.icono }}</span>
+      <span>{{ equipoActivo.equipo }}</span>
+    </div>
+  </header>
+
+  <section class="carrusel" aria-label="Ciberseguridad">
+    <button
+      class="flecha"
+      type="button"
+      aria-label="Ver equipo anterior"
+      [disabled]="equipoActivoIndex === 0"
+      (click)="moverCarrusel(-1)"
+    >
+      ‹
+    </button>
+
+    <div #carousel class="paneles" (scroll)="onScroll($event)">
+      @for (equipo of equipos; track equipo.equipo; let index = $index) {
+        <article
+          class="panel"
+          [class.panel-activo]="equipoActivoIndex === index"
+          [style.--panel-color]="equipo.color"
+          [attr.aria-label]="equipo.equipo"
+        >
+          <div class="panel-heading">
+            <span class="panel-icono" aria-hidden="true">{{ equipo.icono }}</span>
+            <span class="panel-contador">0{{ index + 1 }} / 03</span>
+          </div>
+
+          <h2>{{ equipo.equipo }}</h2>
+          <p class="descripcion">{{ equipo.descripcion }}</p>
+
+          <h3>Controles y habilidades</h3>
+          <ul class="habilidades">
+            @for (habilidad of equipo.habilidades; track habilidad.nombre) {
+              <li>
+                <div class="habilidad-meta">
+                  <h4>{{ habilidad.nombre }}</h4>
+                  <span class="estado-chip" [attr.data-estado]="habilidad.estado">
+                    {{ habilidad.estado }}
+                  </span>
+                </div>
+                <p class="habilidad-descripcion">{{ habilidad.descripcion }}</p>
+              </li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+
+    <button
+      class="flecha"
+      type="button"
+      aria-label="Ver siguiente equipo"
+      [disabled]="equipoActivoIndex === equipos.length - 1"
+      (click)="moverCarrusel(1)"
+    >
+      ›
+    </button>
+  </section>
+
+  <div class="indicadores" aria-label="Posición del carrusel">
+    @for (equipo of equipos; track equipo.equipo; let index = $index) {
+      <span
+        class="indicador"
+        [class.indicador-activo]="equipoActivoIndex === index"
+        [attr.aria-label]="equipo.equipo"
+      ></span>
+    }
+  </div>
+</main>

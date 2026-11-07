@@ -1,0 +1,275 @@
+<section class="home">
+
+  <div class="home-content">
+
+    <!-- PRESENTACIÓN -->
+    <div class="home-text">
+
+      <span class="home-greeting">Hola, soy</span>
+
+      <h1>Moisés Romero</h1>
+
+      <h2>Desarrollador Full Stack</h2>
+
+      <p class="home-description">
+        T.S.U. en Informática y estudiante de Ingeniería Informática.
+        Desarrollo y despliego aplicaciones web completas, trabajando
+        tanto en frontend como en backend, bases de datos y optimización.
+      </p>
+
+      <p class="home-description">
+        También utilizo Inteligencia Artificial y agentes de IA como parte
+        de mi flujo de desarrollo, combinando generación, revisión y
+        auditoría de código con desarrollo tradicional.
+      </p>
+
+      <!-- BOTONES PRINCIPALES -->
+      <div class="buttons">
+
+        <a routerLink="/proyectos">
+          Ver proyectos
+        </a>
+
+        <a routerLink="/perfil">
+          Sobre mí
+        </a>
+
+        <a routerLink="/contacto">
+          Contacto
+        </a>
+
+      </div>
+
+      <!-- REDES PROFESIONALES -->
+      <div class="social-links">
+
+        <a
+          href="https://github.com/MoisesRomeroKD"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/moisés-romero-ar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ÁREAS PRINCIPALES -->
+    <div class="home-info">
+
+      <article class="info-card">
+
+        <span class="info-number">01</span>
+
+        <h3>Full Stack</h3>
+
+        <p>
+          Desarrollo frontend, backend, APIs, bases de datos
+          y despliegue de aplicaciones web.
+        </p>
+
+      </article>
+
+
+      <article class="info-card">
+
+        <span class="info-number">02</span>
+
+        <h3>IA &amp; Agentes</h3>
+
+        <p>
+          Uso de IA para programación, generación, refactorización,
+          revisión y auditoría de código.
+        </p>
+
+        <button
+          class="ai-more"
+          type="button"
+          aria-controls="ai-drawer"
+          [attr.aria-expanded]="isAiDrawerOpen()"
+          (click)="openAiDrawer()"
+        >
+          Ver más
+        </button>
+
+      </article>
+
+
+      <article class="info-card">
+
+        <span class="info-number">03</span>
+
+        <h3>Web &amp; Performance</h3>
+
+        <p>
+          Desarrollo responsive, SEO básico y optimización
+          del rendimiento y velocidad de carga.
+        </p>
+
+      </article>
+
+
+      <article class="info-card">
+
+        <span class="info-number">04</span>
+
+        <h3>Ciberseguridad</h3>
+
+        <p>
+          Implementé medidas de seguridad en mis proyectos más innovadores. Actualmente aprendo en curso formativo expandiendo más las decisiones técnicas al sistema.
+        </p>
+
+        <a class="ai-more" routerLink="/ciberseguridad">Ver más</a>
+
+      </article>
+
+    </div>
+
+  </div>
+
+  <button
+    class="ai-drawer-overlay"
+    type="button"
+    aria-label="Cerrar detalles de IA y agentes"
+    [class.visible]="isAiDrawerOpen()"
+    [attr.aria-hidden]="!isAiDrawerOpen()"
+    [attr.inert]="isAiDrawerOpen() ? null : ''"
+    tabindex="-1"
+    (click)="closeAiDrawer()"
+  ></button>
+
+  <aside
+    id="ai-drawer"
+    class="ai-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="ai-drawer-title"
+    [class.open]="isAiDrawerOpen()"
+    [attr.aria-hidden]="!isAiDrawerOpen()"
+    [attr.inert]="isAiDrawerOpen() ? null : ''"
+  >
+    <div class="ai-drawer-header">
+      <div>
+        <p class="ai-drawer-eyebrow">HERRAMIENTAS DE TRABAJO</p>
+        <h2 id="ai-drawer-title">IA &amp; Agentes</h2>
+      </div>
+      <button
+        class="ai-drawer-close"
+        type="button"
+        aria-label="Cerrar panel"
+        (click)="closeAiDrawer()"
+      >
+        ×
+      </button>
+    </div>
+
+    <section class="ai-drawer-section" aria-labelledby="ai-tools-title">
+      <h3 id="ai-tools-title">Inteligencias Artificiales</h3>
+      <ul class="ai-tool-list">
+        @for (tool of aiTools; track tool) {
+          <li>{{ tool }}</li>
+        }
+      </ul>
+    </section>
+
+    <section class="ai-drawer-section" aria-labelledby="ai-agents-title">
+      <h3 id="ai-agents-title">Agentes</h3>
+      <ul class="ai-tool-list">
+        @for (agent of agents; track agent) {
+          <li>{{ agent }}</li>
+        }
+      </ul>
+    </section>
+  </aside>
+
+
+  <!-- STACK -->
+  <section class="home-stack-section" aria-labelledby="stack-title">
+    <header class="stack-header">
+      <div>
+        <p class="stack-eyebrow">CAPACIDADES TÉCNICAS</p>
+        <h2 id="stack-title">Stack tecnológico</h2>
+      </div>
+      <p class="stack-intro">
+        Este portafolio está construido con Angular, TypeScript, CSS y RxJS.
+        Las tecnologías siguientes aparecen en el perfil y los proyectos; no representan niveles de dominio.
+      </p>
+    </header>
+
+    <div class="stack-grid">
+      @for (group of stackGroups; track group.name; let index = $index) {
+        <article class="stack-category">
+          <div class="stack-category-heading">
+            <span class="stack-index" aria-hidden="true">0{{ index + 1 }}</span>
+            <h3>{{ group.name }}</h3>
+          </div>
+          <ul class="stack-list">
+            @for (technology of group.technologies; track technology) {
+              <li>{{ technology }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </section>
+
+
+  <!-- PROYECTO DESTACADO -->
+  <div class="home-featured">
+
+    <div class="featured-header">
+
+      <span>PROYECTO DESTACADO</span>
+
+      <span>2026</span>
+
+    </div>
+
+
+    <div class="featured-content">
+
+      <div>
+
+        <h3>
+          Sistema de Gestión y Evaluación
+          de Atletas — Club de Atletismo Liceo Caracas
+        </h3>
+
+        <p>
+          Aplicación web Full Stack para la gestión de atletas,
+          evaluaciones de rendimiento y asistencias de entrenamiento,
+          reemplazando procesos manuales realizados mediante papel y Excel.
+        </p>
+
+      </div>
+
+
+      <div class="featured-tech">
+
+        <span>React</span>
+        <span>Django</span>
+        <span>PostgreSQL</span>
+        <span>Scrum</span>
+
+      </div>
+
+
+      <a routerLink="/proyectos">
+        Ver proyectos →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>

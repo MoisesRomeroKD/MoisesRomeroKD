@@ -1,0 +1,39 @@
+.card-detalle {
+  color: var(--color-texto);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-detalle div {
+  line-height: 1.6;
+}
+
+.card-detalle p {
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 22px;
+  color: var(--color-acento);
+}
+
+.resumen {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.descripcion {
+  line-height: 1.5;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.tech ul {
+  padding-left: 18px;
+}
+
+.tech li {
+  font-size: 13px;
+  opacity: 0.85;
+}

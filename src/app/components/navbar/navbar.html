@@ -1,0 +1,115 @@
+<nav class="navbar">
+  <a class="logo" routerLink="/" aria-label="Ir al inicio">MKR</a>
+
+  <ul class="links">
+    <li><a routerLink="/" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+    <li><a routerLink="/perfil" routerLinkActive="active">Sobre mí</a></li>
+    <li><a routerLink="/proyectos" routerLinkActive="active">Proyectos</a></li>
+    <li><a routerLink="/ciberseguridad" routerLinkActive="active">Ciberseguridad</a></li>
+    <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+    
+  </ul>
+
+  <div class="navbar-social" aria-label="Redes profesionales">
+    <a
+      class="navbar-social-link"
+      [href]="LINKEDIN_PROFILE_URL"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn (se abre en una nueva pestaña)"
+      title="LinkedIn"
+    >
+      <span class="linkedin-mark" aria-hidden="true">in</span>
+    </a>
+    @if (INSTAGRAM_PROFILE_URL) {
+      <a
+        class="navbar-social-link"
+        [href]="INSTAGRAM_PROFILE_URL"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram (se abre en una nueva pestaña)"
+        title="Instagram"
+      >
+        <svg class="instagram-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle class="instagram-dot" cx="17.5" cy="6.5" r="1"></circle>
+        </svg>
+      </a>
+    } @else {
+      <span
+        class="navbar-social-link instagram-placeholder"
+        role="img"
+        aria-label="Instagram próximamente"
+        title="Instagram próximamente"
+      >
+        <svg class="instagram-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle class="instagram-dot" cx="17.5" cy="6.5" r="1"></circle>
+        </svg>
+      </span>
+    }
+  </div>
+
+  <button
+    class="btn-theme"
+    type="button"
+    [attr.aria-label]="themeService.isDark() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+    [attr.title]="themeService.isDark() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+    (click)="themeService.toggleTheme()"
+  >
+    {{ themeService.isDark() ? '☀' : '☾' }}
+  </button>
+
+  <div class="mobile-controls">
+    <button
+      class="btn-theme"
+      type="button"
+      [attr.aria-label]="themeService.isDark() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+      [attr.title]="themeService.isDark() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+      (click)="themeService.toggleTheme()"
+    >
+      {{ themeService.isDark() ? '☀' : '☾' }}
+    </button>
+    <button
+      class="btn-menu"
+      type="button"
+      aria-label="Abrir menú"
+      aria-controls="mobile-menu"
+      [attr.aria-expanded]="isMenuOpen()"
+      (click)="openMenu()"
+    >
+      ☰
+    </button>
+  </div>
+
+  <button
+    class="menu-overlay"
+    type="button"
+    aria-label="Cerrar menú"
+    [class.visible]="isMenuOpen()"
+    [attr.aria-hidden]="!isMenuOpen()"
+    tabindex="-1"
+    (click)="closeMenu()"
+  ></button>
+
+  <aside
+    id="mobile-menu"
+    class="sidebar"
+    role="dialog"
+    aria-label="Menú"
+    aria-modal="true"
+    [class.abierto]="isMenuOpen()"
+    [attr.aria-hidden]="!isMenuOpen()"
+  >
+    <ul class="sidebar-links">
+      <li><a routerLink="/perfil" routerLinkActive="active" (click)="closeMenu()">Sobre mí</a></li>
+      <li><a routerLink="/proyectos" routerLinkActive="active" (click)="closeMenu()">Proyectos</a></li>
+      <li><a routerLink="/ciberseguridad" routerLinkActive="active" (click)="closeMenu()">Ciberseguridad</a></li>
+      <li><a routerLink="/contacto" routerLinkActive="active" (click)="closeMenu()">Contacto</a></li>
+    </ul>
+  </aside>
+
+</nav>

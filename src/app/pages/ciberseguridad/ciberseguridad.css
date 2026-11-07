@@ -1,0 +1,256 @@
+:host {
+  display: block;
+}
+
+.ciberseguridad-page {
+  min-height: calc(100vh - 74px);
+  padding: clamp(32px, 6vw, 72px) 24px;
+  color: var(--color-texto);
+  transition: color 0.3s ease;
+}
+
+.ciberseguridad-header {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--color-acento);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  transition: color 0.25s ease;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+.intro {
+  margin: 14px 0 20px;
+  color: var(--color-texto-secundario);
+  line-height: 1.6;
+}
+
+.equipo-activo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-texto);
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+.equipo-activo-icono {
+  color: var(--panel-color);
+  font-size: 1.6rem;
+}
+
+.carrusel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 780px) auto;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.paneles {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: 20px;
+}
+
+.paneles::-webkit-scrollbar {
+  display: none;
+}
+
+.panel {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: clamp(24px, 5vw, 42px);
+  scroll-snap-align: center;
+  background: var(--color-superficie);
+  border: 1px solid color-mix(in srgb, var(--panel-color) 32%, var(--color-superficie));
+  border-top: 4px solid var(--panel-color);
+  border-radius: 20px;
+  opacity: 0.78;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.panel-activo {
+  opacity: 1;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-icono {
+  color: var(--panel-color);
+  font-size: 2.4rem;
+}
+
+.panel-contador {
+  color: var(--color-texto-secundario);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.panel h2 {
+  margin: 18px 0 8px;
+  padding: 8px 12px;
+  color: var(--color-blanco);
+  background: var(--color-fondo);
+  border-radius: 8px;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+}
+
+.panel:nth-child(1) h2 {
+  background: var(--team-red-fondo);
+}
+
+.panel:nth-child(2) h2 {
+  background: var(--team-blue-fondo);
+}
+
+.panel:nth-child(3) h2 {
+  background: var(--team-purple);
+  border-bottom: 2px solid var(--team-purple-detalle);
+}
+
+.descripcion {
+  min-height: 3.2em;
+  color: var(--color-texto-secundario);
+  line-height: 1.6;
+}
+
+.panel h3 {
+  margin: 26px 0 16px;
+  font-size: 1rem;
+}
+
+.habilidades {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.habilidades li {
+  padding: 14px;
+  background: var(--color-superficie-secundaria);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+}
+
+.habilidad-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.habilidad-meta h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.estado-chip {
+  flex: 0 0 auto;
+  padding: 4px 9px;
+  color: var(--color-texto);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.estado-chip[data-estado="en aprendizaje"] {
+  color: var(--color-acento);
+  border-color: var(--color-acento);
+}
+
+.estado-chip[data-estado="diseñado"] {
+  color: var(--color-acento-secundario);
+  border-color: var(--color-acento-secundario);
+}
+
+.estado-chip[data-estado="pendiente de validar"] {
+  color: var(--color-texto);
+  border-color: var(--color-estado-pendiente);
+}
+
+.habilidad-descripcion {
+  margin: 10px 0 0;
+  color: var(--color-texto-secundario);
+  line-height: 1.55;
+}
+
+.flecha {
+  width: 44px;
+  height: 44px;
+  color: var(--color-acento);
+  font-size: 2rem;
+  line-height: 1;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-acento);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
+}
+
+.flecha:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.indicador {
+  width: 8px;
+  height: 8px;
+  background: var(--color-texto-secundario);
+  border-radius: 50%;
+  opacity: 0.45;
+}
+
+.indicador-activo {
+  background: var(--color-acento);
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .ciberseguridad-page {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .carrusel {
+    display: block;
+  }
+
+  .flecha {
+    display: none;
+  }
+
+  .panel {
+    padding: 24px;
+  }
+}

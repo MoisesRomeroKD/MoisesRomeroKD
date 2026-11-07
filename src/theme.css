@@ -1,0 +1,83 @@
+/*
+Dark Tech palette for MKR. Use these tokens in components and mix them with
+color-mix() when an intermediate tone is needed. Red is reserved for Red Team.
+*/
+:root {
+  --color-negro: #090D12;
+  --color-azul-oscuro: #111820;
+  --color-superficie-base: #151F29;
+  --color-borde-base: #293744;
+  --color-verde-principal: #00C781;
+  --color-verde-secundario: #A3E635;
+  --color-texto-principal: #E5E7EB;
+  --color-texto-secundario: #9CA3AF;
+
+  --color-blanco: var(--color-texto-principal);
+  --color-celeste: #38BDF8;
+  --color-rojo-sangre: #8A0303;
+  --color-rojo-cherry: #D2042D;
+  --color-indigo: #4B3BB5;
+
+  --color-fondo: var(--color-negro);
+  --color-superficie: var(--color-superficie-base);
+  --color-superficie-secundaria: var(--color-azul-oscuro);
+  --color-borde: var(--color-borde-base);
+  --color-texto: var(--color-texto-principal);
+  --color-acento: var(--color-verde-principal);
+  --color-acento-secundario: var(--color-verde-secundario);
+  --color-destacado: var(--color-verde-secundario);
+  --color-acento-texto: var(--color-negro);
+  --color-fondo-sutil: var(--color-azul-oscuro);
+  --color-sombra: color-mix(in srgb, var(--color-negro) 60%, var(--color-azul-oscuro));
+  --color-acento-rojo: var(--color-rojo-cherry);
+
+  --color-estado-produccion: var(--color-verde-principal);
+  --color-estado-finalizado: var(--color-verde-secundario);
+  --color-estado-pruebas: var(--color-celeste);
+  --color-estado-construccion: var(--color-celeste);
+  --color-estado-pausa: var(--color-texto-secundario);
+  --color-estado-pendiente: var(--color-texto-secundario);
+  --color-estado-mvp: var(--color-verde-secundario);
+
+  --team-red: var(--color-rojo-cherry);
+  --team-red-fondo: var(--color-rojo-sangre);
+  --team-blue: var(--color-celeste);
+  --team-blue-fondo: var(--color-azul-oscuro);
+  --team-purple: var(--color-indigo);
+  --team-purple-detalle: var(--color-verde-secundario);
+}
+
+[data-theme='light'] {
+  --color-superficie-base: #FFFFFF;
+  --color-borde-base: #D5DFD9;
+  --color-verde-principal: #008F62;
+  --color-verde-secundario: #267A50;
+  --color-texto-principal: #17211C;
+  --color-texto-secundario: #52635A;
+  --color-celeste: #006B9A;
+
+  --color-fondo: #F5F7F6;
+  --color-superficie: #FFFFFF;
+  --color-superficie-secundaria: #EAF0ED;
+  --color-borde: #D5DFD9;
+  --color-texto: #17211C;
+  --color-blanco: #FFFFFF;
+  --color-acento: color-mix(in srgb, var(--color-verde-principal) 80%, var(--color-texto));
+  --color-acento-secundario: var(--color-verde-secundario);
+  --color-destacado: var(--color-verde-secundario);
+  --color-acento-texto: #FFFFFF;
+  --color-fondo-sutil: #EAF0ED;
+  --color-sombra: color-mix(in srgb, var(--color-negro) 14%, transparent);
+
+  --color-estado-produccion: var(--color-acento);
+  --color-estado-finalizado: var(--color-verde-secundario);
+  --color-estado-pruebas: var(--color-celeste);
+  --color-estado-construccion: var(--color-celeste);
+  --color-estado-pausa: var(--color-texto-secundario);
+  --color-estado-pendiente: var(--color-texto-secundario);
+  --color-estado-mvp: var(--color-verde-secundario);
+
+  --team-red-fondo: var(--color-rojo-sangre);
+  --team-blue-fondo: #0B5563;
+  --team-purple-detalle: var(--color-verde-secundario);
+}

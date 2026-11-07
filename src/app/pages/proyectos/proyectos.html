@@ -1,0 +1,110 @@
+<div class="proyectos-page">
+
+  <!-- HEADER -->
+  <header class="proyectos-header">
+    <div class="header-content">
+
+      <!-- FILTROS -->
+      <div class="filtros">
+        <button
+          *ngFor="let filtroItem of filtros"
+          type="button"
+          class="filtro-btn"
+          [class.activo]="filtro === filtroItem"
+          (click)="setFiltro(filtroItem)"
+        >
+          {{ filtroItem }}
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="proyectos-main">
+    <div class="tarjetas-grid">
+
+      <article
+        *ngFor="let proyecto of proyectosFiltrados"
+        class="tarjeta-proyecto"
+        [class.featured]="isFeatured(proyecto.titulo)"
+      >
+
+        <!-- BARRA DEL PROYECTO DESTACADO -->
+        <div
+          *ngIf="isFeatured(proyecto.titulo)"
+          class="featured-bar"
+        ></div>
+
+        <div class="tarjeta-contenido">
+
+          <!-- ICONO + ESTADO -->
+          <div class="tarjeta-top">
+
+            <div class="tarjeta-icono">
+              {{ projectIcon(proyecto.titulo) }}
+            </div>
+
+            <div class="status-list">
+              <span
+                *ngFor="let estado of statusLabels(proyecto)"
+                class="status-badge"
+                [ngClass]="statusClass(estado)"
+              >
+                <span class="status-icon">{{ statusIcon(estado) }}</span>
+                {{ estado }}
+              </span>
+            </div>
+
+          </div>
+
+          <!-- TITULO -->
+          <h2 class="tarjeta-titulo">
+
+            {{ proyecto.titulo }}
+
+            <span
+              *ngIf="isFeatured(proyecto.titulo)"
+              class="estrella"
+            >
+              ★
+            </span>
+
+          </h2>
+
+          <!-- DESCRIPCION -->
+          <p class="tarjeta-descripcion">
+            {{ proyecto.descripcion }}
+          </p>
+
+          <!-- TECNOLOGIAS -->
+          <div class="tarjeta-tech">
+
+            <span
+              *ngFor="let tecnologia of proyecto.tecnologias"
+              class="tech-chip"
+            >
+              {{ tecnologia }}
+            </span>
+
+          </div>
+
+          <a
+            *ngIf="proyecto.enlace"
+            class="project-link"
+            [href]="proyecto.enlace"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver proyecto
+            <span aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+</div>
